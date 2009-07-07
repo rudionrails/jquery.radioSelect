@@ -1,0 +1,21 @@
+jQuery radioSelect
+
+Version: 0.0.1
+Requires jQuery 1.2.6+
+
+Copyright (c) 2009 Rudolf Schmidt
+
+Dual licensed under the MIT and GPL licenses:
+  http://www.opensource.org/licenses/mit-license.php
+  http://www.gnu.org/licenses/gpl.html
+
+Note: This plugin was heavily inspired by Cory S.N. LaViska and the jquery.multiSelect plugin
+(visit http://abeautifulsite.net/notebook.php?article=62 for more information)
+
+
+Usage: $('#element_id').radioSelect( options, callback )
+
+Options:  focusTimeout       - time until the expanded options disappear after losing focus;
+                               false will define that there is no timeout at all and the box will not disappear
+                               unless you click outside; default = 250
+          matcherTimeout     - determines the delay the entered search terms are filtered on the last keyup

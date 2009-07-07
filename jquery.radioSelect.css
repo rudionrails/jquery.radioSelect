@@ -1,0 +1,50 @@
+.radioSelect, input.radioSelect,
+* html .radioSelect, * html input.radioSelect {
+  width: 195px;
+  border: solid 1px #BBB;
+  padding: 4px 20px 4px 4px;
+  display: inline;
+
+  background-image: url(/images/navigation/dropdown.gif);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+.radioSelect.hover { background-image: url(/images/navigation/dropdown_hover.gif); }
+.radioSelect.active { background-image: url(/images/navigation/dropdown_active.gif); }
+
+.radioSelectOptions {
+  width: 219px;
+  margin-top: -1px;
+  border: solid 1px #B2B2B2;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+.radioSelectOptions {
+  overflow: auto;
+  max-height: 150px;
+}
+
+#search .radioSelectOptions {
+  width: 179px;
+}
+* html .radioSelectOptions {
+  height: 150px;
+}
+.radioSelectOptions LABEL {
+  padding: 2px 5px;
+  display: block;
+}
+.radioSelectOptions INPUT {
+  margin: 0 5px 0 0;
+}
+.radioSelectOptions LABEL.checked {
+  background-color: #E6E6E6;
+}
+
+.radioSelectOptions LABEL.hover {
+  background-color: #CFCFCF;
+  background-image:none;
+}
+
+.radioSelectOptions .nomatch { display: none; }
