@@ -47,7 +47,7 @@ if( jQuery ) ( function($) {
 
         // Insert
         $(select).after(html);
-        
+
         // Events
         var currentRadioSelect = $(select).next('.radioSelect');
         currentRadioSelect.mouseover( function() {
@@ -79,7 +79,7 @@ if( jQuery ) ( function($) {
           radioSelectOptions.radioSelectUpdateSelected();
           radioSelectOptions.find('LABEL').removeClass('checked').find('INPUT:checked').parent().addClass('checked');
           radioSelectOptions.prev('.multiSelect').focus();
-          
+
           if( callback ) callback( $(this) );
         });
 
@@ -96,11 +96,11 @@ if( jQuery ) ( function($) {
         }).mouseout( function() {
           $(this).parent().find('LABEL').removeClass('hover');
         });
-        
+
 
         // Keyboard Stuff
         var timer = '';
-        currentRadioSelect.keydown( function(e) { 
+        currentRadioSelect.keydown( function(e) {
           clearTimeout(timer);
         });
         currentRadioSelect.keyup( function(e) {
@@ -131,7 +131,7 @@ if( jQuery ) ( function($) {
       $('.multiSelect').radioSelectOptionsHide();
       $(this).next('.radioSelectOptions').find('LABEL').removeClass('hover');
       $(this).addClass('active').next('.radioSelectOptions').show();
-      
+
       // Position it
       var offset = $(this).position();
       $(this).next('.radioSelectOptions').css({
@@ -154,24 +154,24 @@ if( jQuery ) ( function($) {
 
     radioSelectUpdateSelected: function() {
       var selected = $(this).find("LABEL INPUT:checked:first");
-      
+
       if( selected ) {
         $(this).prev('.radioSelect').val( selected.parent().text() );
       }
     },
 
-    radioSelectMatchKeywords: function() { 
-      var value = $.trim( $(this).val() ); // trim tailing and leading whitespace
+    radioSelectMatchKeywords: function() {
+      var values = $.trim( $(this).val() ).split(/\W/); // trim tailing and leading whitespace
       var radioSelectOptions = $(this).next('.radioSelectOptions');
-      var regexp = new RegExp( '(' + value.split(/\W+/).join("|") + ')', 'i');
-      
-      if ( value.length > 0 ) {
+
+      if ( values.length > 0 ) {
         radioSelectOptions.find( "LABEL" ).each( function() {
-          if( $(this).text().match( regexp ) ) {
-            $(this).removeClass('nomatch');
-          } else {
-            $(this).addClass('nomatch');
+          var match = true, i = values.length, text = $(this).text();
+          while (--i >= 0 && match) {
+            if( !text.match( new RegExp(values[i], 'i') ) ) match = false;
           }
+
+          if( match ) $(this).removeClass('nomatch'); else $(this).addClass('nomatch');
         });
         // uncheck checked radiobuttons if they are not in the match
         radioSelectOptions.find('LABEL.nomatch INPUT:checked').removeAttr('checked');
